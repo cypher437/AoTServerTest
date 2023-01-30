@@ -26,7 +26,7 @@ In reality the choices are Relational or Graph Databases. I'd recommend an class
 
 # Design
 
-![Architecture Design](./Mock Diagram.png)
+![Architecture Design](https://github.com/cypher437/AoTServerTest/blob/main/Mock%20Diagram.png)
 
 ## API
 Ideas for the API design.
