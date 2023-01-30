@@ -1,0 +1,21 @@
+
+// Error Reporting
+    // I Would recommend logging exception messages to a third party error  service like Rollbar because it provide useful anylitics
+    // Should Create local logs for devlopers to debug
+public static class Logger
+{
+    [System.Serializable]
+    public class LoggingException : System.Exception
+    {
+        public LoggingException() {
+        }
+        public LoggingException(string message) : base(message) {
+
+        }
+        public LoggingException(string message, System.Exception inner) : base(message, inner) { }
+        protected LoggingException(
+            System.Runtime.Serialization.SerializationInfo info,
+            System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+    }
+
+}

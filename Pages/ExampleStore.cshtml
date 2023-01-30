@@ -1,0 +1,39 @@
+@page
+//NOTES I'd use something like Razor for rendering server side pages
+    //https://learn.microsoft.com/en-us/aspnet/core/tutorials/choose-web-ui?view=aspnetcore-7.0
+<h1>Store</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in items)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<StoreItem> items = new List<StoreItem>
+    {
+        new StoreItem { Name = "Frog Pikeman", Description = "Rare Hero", Price = 100 },
+        new StoreItem { Name = "Archer", Description = "Common Unit", Price = 50 },
+        new StoreItem { Name = "Time Boost", Description = "Gives extra time", Price = 75 }
+    };
+
+    private class StoreItem
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
+    }
+}

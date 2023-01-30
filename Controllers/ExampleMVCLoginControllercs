@@ -1,0 +1,51 @@
+
+//NOTES This is just an example how I'd prefer to setup account login if I were using a frame work instead of the provided base code.
+namespace
+{
+    class LoginController : ApiController
+    {
+        private readonly AccountRepository Repository;
+
+        public LoginController(AccountRepository repository)
+        {
+            Repository = repository;
+        }
+        // MVC would save time on the routing and responses
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] Account account)
+        {
+        }
+
+        // MVC would save us a lot of time
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] PlayerAccount account)
+        {
+            Console.WriteLine("visit login");
+            // issue the credential and bearer token
+            // and with MVC the authentication header is all built in
+        }
+
+        public static string ClientInformation(HttpListenerContext context)
+        {
+            System.Security.Principal.IPrincipal user = context.User;
+            System.Security.Principal.IIdentity id = user.Identity;
+            if (id == null)
+            {
+                return "Client authentication is not enabled for this Web server.";
+            }
+
+            string display;
+            if (id.IsAuthenticated)
+            {
+                display = String.Format("{0} was authenticated using {1}", id.Name,
+                    id.AuthenticationType);
+            }
+            else
+            {
+            display = String.Format("{0} was not authenticated", id.Name);
+            }
+            return display;
+        }
+    }
+}
+
